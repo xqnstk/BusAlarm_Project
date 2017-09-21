@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 
 import IntroScreen.*;
 import BusAlarmScreen.BusAlarmPanel;
+import BusAlarmScreen.BusSeat;
 
 public class BusAlarm extends JFrame {
 
@@ -18,6 +19,8 @@ public class BusAlarm extends JFrame {
 	public FirstPanel firstpanel = null;
 	public IntroPanel intropanel = null;
 	public BusAlarmPanel busalarmpanel=null;
+	public BusSeat busseat = null;
+
 
 	public void change(String panelName) {
 		if (panelName.equals("firstpanel")) {
@@ -34,6 +37,12 @@ public class BusAlarm extends JFrame {
 		else if(panelName.equals("busalarmpanel")){
 			getContentPane().removeAll();
 			getContentPane().add(busalarmpanel);
+			revalidate();
+			repaint();
+		}
+		else if(panelName.equals("busseat")){
+			getContentPane().removeAll();
+			getContentPane().add(busseat);
 			revalidate();
 			repaint();
 		}
@@ -56,7 +65,8 @@ public class BusAlarm extends JFrame {
 					frame.setTitle("버스 알림이");
 					frame.firstpanel = new FirstPanel(frame);
 					frame.intropanel = new IntroPanel(frame);
-					frame.busalarmpanel = new BusAlarmPanel(frame);				
+					frame.busalarmpanel = new BusAlarmPanel(frame);		
+					frame.busseat = new BusSeat(frame);
 					
 					frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					frame.setSize(SCREEN_W, SCREEN_H);

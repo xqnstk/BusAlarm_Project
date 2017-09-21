@@ -21,7 +21,7 @@ public class FirstPanel extends JPanel {
 		add(bStartScreenImage);
 		bStartScreenImage.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				busalarm.change("intropanel");
+				busalarm.change("intropanel"); //¿Ãµø
 			}
 		});
 	}

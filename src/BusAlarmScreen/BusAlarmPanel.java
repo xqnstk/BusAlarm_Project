@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -27,6 +29,12 @@ public class BusAlarmPanel extends JPanel{
 		lbMainScreen.setSize(1280,720);
 		lbMainScreen.setLocation(0,0);
 		add(lbMainScreen);
+		lbMainScreen.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				busalarm.change("busseat"); //¿Ãµø
+			}
+		});
 	}
-
+	
+	
 }
