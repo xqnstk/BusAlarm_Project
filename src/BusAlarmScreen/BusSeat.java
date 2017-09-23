@@ -14,7 +14,7 @@ import Main.BusAlarm;
 
 public class BusSeat extends JPanel {
 	BusAlarm busalarm;
-	ImageIcon icStartScreen = new ImageIcon(this.getClass().getResource("/MainScreen.jpg"));
+	ImageIcon icStartScreen = new ImageIcon(this.getClass().getResource("/MainScreen2.jpg"));
 	JLabel bStartScreenImage = new JLabel(icStartScreen);
 	
 	public BusSeat(BusAlarm busalarm) {
