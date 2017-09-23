@@ -14,19 +14,14 @@ import Main.BusAlarm;
 
 public class BusSeat extends JPanel {
 	BusAlarm busalarm;
-	ImageIcon businfo = new ImageIcon(this.getClass().getResource("/MainScreen2.jpg"));
-	JButton bStartScreenImage = new JButton(businfo);
+	ImageIcon icStartScreen = new ImageIcon(this.getClass().getResource("/MainScreen.jpg"));
+	JLabel bStartScreenImage = new JLabel(icStartScreen);
 	
 	public BusSeat(BusAlarm busalarm) {
 		this.busalarm=busalarm;
 		setLayout(null);
-		
-		bStartScreenImage.setSize(300,720);
+		bStartScreenImage.setSize(1280,720);
 		bStartScreenImage.setLocation(0,0);
-		
-		BusAlarm.setButton(bStartScreenImage);
 		add(bStartScreenImage);
-	
 	}
-
-}
+} //BusSeat

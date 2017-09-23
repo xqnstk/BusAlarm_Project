@@ -21,14 +21,15 @@ public class BusAlarmPanel extends JPanel{
 	BusAlarm busalarm;
 	Bus bus;
 	ImageIcon icMainScreen2 = new ImageIcon(this.getClass().getResource("/MainScreen2.jpg"));
-	
 	JLabel lbMainScreen=new JLabel(icMainScreen2);
+	
 	public BusAlarmPanel(BusAlarm busalarm) {
 		this.busalarm=busalarm;
 		setLayout(null);
 		lbMainScreen.setSize(1280,720);
 		lbMainScreen.setLocation(0,0);
 		add(lbMainScreen);
+		
 		lbMainScreen.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				busalarm.change("busseat"); //¿Ãµø
