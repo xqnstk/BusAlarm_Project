@@ -1,28 +1,31 @@
 package Main;
 
-import java.awt.*;
+import java.awt.EventQueue;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-import IntroScreen.*;
-import BusAlarmScreen.BusAlarmPanel;
-import BusAlarmScreen.BusAlarmPanel2;
-import BusAlarmScreen.BusSeat;
+import BusAlarmScreen.BusPanel;
+import IntroScreen.FirstPanel;
+import IntroScreen.IntroPanel;
 
 public class BusAlarm extends JFrame {
 
 	public static final int SCREEN_W = 1280;
 	public static final int SCREEN_H = 720;
+	public static int BUS_SPEED=2;
+	public static final int SLEEP_TIME=5;
 
 	private JPanel contentPane;
 
 	public FirstPanel firstpanel = null;
 	public IntroPanel intropanel = null;
-	public BusAlarmPanel busalarmpanel=null;
-	public BusAlarmPanel2 busalarmpanel2=null;
-	public BusSeat busseat = null;
-
+	public BusPanel buspanel=null;
 
 	public void change(String panelName) {
 		if (panelName.equals("firstpanel")) {
@@ -36,21 +39,9 @@ public class BusAlarm extends JFrame {
 			revalidate();
 			repaint();
 		}
-		else if(panelName.equals("busalarmpanel")){
+		else if(panelName.equals("buspanel")){
 			getContentPane().removeAll();
-			getContentPane().add(busalarmpanel);
-			revalidate();
-			repaint();
-		}
-		else if(panelName.equals("busalarmpanel2")){
-			getContentPane().removeAll();
-			getContentPane().add(busalarmpanel2);
-			revalidate();
-			repaint();
-		}
-		else if(panelName.equals("busseat")){
-			getContentPane().removeAll();
-			getContentPane().add(busseat);
+			getContentPane().add(buspanel);
 			revalidate();
 			repaint();
 		}
@@ -66,6 +57,7 @@ public class BusAlarm extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+			        JFrame.setDefaultLookAndFeelDecorated(true); 
 					BusAlarm frame = new BusAlarm();
 					Toolkit toolkit = Toolkit.getDefaultToolkit();
 					Image img = toolkit.getImage("img/BusIcon.png");
@@ -73,9 +65,7 @@ public class BusAlarm extends JFrame {
 					frame.setTitle("버스 알림이");
 					frame.firstpanel = new FirstPanel(frame);
 					frame.intropanel = new IntroPanel(frame);
-					frame.busalarmpanel = new BusAlarmPanel(frame);		
-					frame.busalarmpanel2 = new BusAlarmPanel2(frame);		
-					frame.busseat = new BusSeat(frame);
+					frame.buspanel=new BusPanel(frame);
 					
 					frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					frame.setSize(SCREEN_W, SCREEN_H);
@@ -93,5 +83,13 @@ public class BusAlarm extends JFrame {
 
 	public BusAlarm() {
 		contentPane = new JPanel();
+		
+		//작업 표시줄의 닫기 버튼 누르면 종료됨.
+		this.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e) { 
+                    System.exit(0);
+            }
+    });
+
 	}
 }

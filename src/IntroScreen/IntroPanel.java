@@ -32,44 +32,43 @@ public class IntroPanel extends JPanel {
 		this.busalarm= busalarm;
 		setLayout(null);
 		
-		bIntroButton1.setSize(30,30); //크기 설정
+		bIntroButton1.setSize(30,30);
 		bIntroButton2.setSize(30,30);
 		bIntroButton3.setSize(30,30);
 		
-		bIntroButton1.setLocation(BusAlarm.SCREEN_W/2-85, 450); //위치 설정
+		bIntroButton1.setLocation(BusAlarm.SCREEN_W/2-85, 450);
 		bIntroButton2.setLocation(BusAlarm.SCREEN_W/2-15, 450);
 		bIntroButton3.setLocation(BusAlarm.SCREEN_W/2+55, 450);
-		
-		introButton(bIntroButton1,bIntroButton2,bIntroButton3); // 버튼들 함수
+		introButton(bIntroButton1,bIntroButton2,bIntroButton3);
 		introButton(bIntroButton2,bIntroButton1,bIntroButton3);
 		introButton(bIntroButton3,bIntroButton1,bIntroButton2);
 		
-		bStartButton.setIcon(icStartButton); //시작하기 버튼
+		bStartButton.setIcon(icStartButton);
 		bStartButton.setSize(500, 80);
 		bStartButton.setLocation(BusAlarm.SCREEN_W/2-250,520);
 		BusAlarm.setButton(bStartButton);
 		bStartButton.addMouseListener(new MouseAdapter() {
-			public void mouseEntered(MouseEvent e){ //커서가 버튼 안에 있을 때
-				bStartButton.setIcon(icStartButtonSelect); //색깔 진하게
+			public void mouseEntered(MouseEvent e){
+				bStartButton.setIcon(icStartButtonSelect);
 			}
-			public void mouseExited(MouseEvent e) { //커서가 바깥에 있을 때
-				bStartButton.setIcon(icStartButton); //색깔 연하게
+			public void mouseExited(MouseEvent e) {
+				bStartButton.setIcon(icStartButton);
 			}
-			public void mousePressed(MouseEvent e) { //버튼을 눌렀을 때
-				busalarm.change("busalarmpanel"); //화면 전환
-
+			public void mousePressed(MouseEvent e) {
+				//busalarm.change("busalarmpanel");
+				busalarm.change("buspanel");
 			}
 		});
 		add(bStartButton);
 		
-		lbIntroScreen.setSize(1280,720); 
+		lbIntroScreen.setSize(1280,720);
 		lbIntroScreen.setLocation(0, 0);
 		add(lbIntroScreen);
 	}
 
 	public void introButton(JButton select,JButton nselect1, JButton nselect2)
 	{
-		BusAlarm.setButton(select); //내가 누른 버튼
+		BusAlarm.setButton(select);
 		select.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent e) {
 				select.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -79,15 +78,17 @@ public class IntroPanel extends JPanel {
 				select.setIcon(icIntroSelect);
 				nselect1.setIcon(icIntroNonSelect);
 				nselect2.setIcon(icIntroNonSelect);
-				if(select==bIntroButton1){ //첫번째 버튼 
+				if(select==bIntroButton1){
 					imgIntroScreen = new ImageIcon(this.getClass().getResource("/IntroScreen1.jpg"));
 					lbIntroScreen.setIcon(imgIntroScreen);
 				}
-				else if(select==bIntroButton2){ //두번째 버튼
+				else if(select==bIntroButton2){
 					imgIntroScreen = new ImageIcon(this.getClass().getResource("/IntroScreen2.jpg"));
 					lbIntroScreen.setIcon(imgIntroScreen);
 				}
-				else if(select ==bIntroButton3){ //세번째 버튼
+				else if(select ==bIntroButton3){
+					imgIntroScreen = new ImageIcon(this.getClass().getResource("/IntroScreen3.png"));
+					lbIntroScreen.setIcon(imgIntroScreen);
 				}
 			}
 		});
